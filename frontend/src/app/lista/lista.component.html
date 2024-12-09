@@ -1,6 +1,19 @@
-<p>lista works!</p>
-<div *ngFor="let paciente of pacientes">
-    <b>{{paciente.nome}}</b><br>
-    <b>{{paciente.id}}</b><br>
-    <b>{{paciente.cpf}}</b><br>
+<link rel="stylesheet" href="lista.component.css">
+<p>Lista de Pacientes</p>
+<h4>{{mensagem}}</h4>
+<div *ngFor="let paciente of pacientes" class="paciente-card">
+    <div class="paciente-info">
+        <div class="paciente-field">
+            <span class="label">Nome:</span>
+            <span class="value">{{paciente.nome}}</span>
+        </div>
+        <div class="paciente-field">
+            <span class="label">CPF:</span>
+            <span class="value">{{paciente.cpf}}</span>
+        </div>
+        <div class="paciente-field">
+            <span class="label">ID:</span>
+            <span class="value">{{paciente.id}}</span>
+        </div>
+    </div>
 </div>

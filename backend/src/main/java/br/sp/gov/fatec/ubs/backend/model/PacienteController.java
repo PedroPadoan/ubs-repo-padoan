@@ -1,8 +1,7 @@
 package br.sp.gov.fatec.ubs.backend.model;
-
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,27 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping({"/pacientes"})
+@RequestMapping({"/paciente"}) 
 public class PacienteController {
     @Autowired
     PacienteRepository bd;
-
-    @GetMapping
-    public Iterable<Paciente> buscarPacientes(){
-        return bd.findAll();
-    }
-
-    @GetMapping("/{idPaciente}")
-    public Paciente buscarPacientePorId(@PathVariable Long idPaciente){
-        return bd.findById(idPaciente).get();
-    }
-
+ 
     @PostMapping
     public ResponseEntity<?> cadastrarPaciente(@RequestBody Paciente paciente){
         try {
@@ -43,6 +30,17 @@ public class PacienteController {
             return new ResponseEntity<>(pac, HttpStatus.CONFLICT);
         }
     }
+    
+    @GetMapping
+    public Iterable<Paciente> buscarPacientes(){
+        return bd.findAll();
+    }
+
+    @GetMapping("/{idPaciente}")
+    public Paciente buscarPacientePorId(@PathVariable Long idPaciente){
+        return bd.findById(idPaciente).get();
+    }
+
 
     @PutMapping(value="/{idPaciente}")
     public Paciente atualizarPaciente(@PathVariable("idPaciente") long id, @RequestBody Paciente paciente){

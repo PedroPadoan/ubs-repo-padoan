@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'
 import { Paciente } from '../model/paciente';
-import { PacienteService } from '../service/paciente.service'
+import { PacienteService } from '../service/paciente.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+ 
 @Component({
   selector: 'app-lista',
   standalone: true,
@@ -11,18 +13,21 @@ import { PacienteService } from '../service/paciente.service'
   providers: [PacienteService]
 })
 export class ListaComponent {
-  mensagem: String="";
+  mensagem: String = "";
   pacientes: Paciente[] = [];
-
-  constructor(private service: PacienteService) {
-    this.listarPacientes();
+ 
+ 
+constructor(private service: PacienteService){
+  this.listarPacientes();
+ 
   }
-
-  listarPacientes() {
+ 
+  listarPacientes(){
     this.service.listar().subscribe({
-      next: (data) => {this.pacientes = data;},
-      error: (msg) => {this.mensagem = "occoreu erro"}
+      next: (data) =>{this.pacientes = data;},
+      error: (msg) =>{this.mensagem = "ocorreu erro"}
     });
   }
-
 }
+ 
+ 

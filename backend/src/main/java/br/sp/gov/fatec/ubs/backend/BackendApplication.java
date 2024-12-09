@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan("br.sp.gov.fatec.ubs.backend.model")
+@ComponentScan("br.sp.gov.fatec.ubs.backend")
 @SpringBootApplication
 public class BackendApplication {
 
