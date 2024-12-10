@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 export class ListaComponent {
   mensagem: String = "";
   pacientes: Paciente[] = [];
+  public obj: Paciente = new Paciente();
  
  
 constructor(private service: PacienteService){
@@ -28,6 +29,13 @@ constructor(private service: PacienteService){
       error: (msg) =>{this.mensagem = "ocorreu erro"}
     });
   }
+  public excluir(){
+    this.service.excluir(this.obj.id).subscribe({
+      next:(data)=>{this.mensagem="paciente removido com sucesso!";},
+      error:(msg)=>{this.mensagem="ocorreu erro tente mais tarde!";}
+   });
+  }
+
 }
  
  
