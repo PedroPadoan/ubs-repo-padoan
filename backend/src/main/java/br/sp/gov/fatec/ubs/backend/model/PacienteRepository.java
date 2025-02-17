@@ -17,6 +17,13 @@ public interface PacienteRepository extends JpaRepository<Paciente, Long> {
 
  
     @Query("select p from paciente p where p.nome = :nome or p.cpf = :cpf")
+    public List<Paciente> buscaPorNomeECpf(@Param("nome") String nome, @Param("cpf") String cpf);
+
+    @Query("select p from paciente p where p.nome = :nome or p.cpf = :cpf")
     public List<Paciente> buscaPorNomeOuCpf(@Param("nome") String nome, @Param("cpf") String cpf);
+ 
+    @Query(value = "select * from paciente where nome = :nome", nativeQuery = true)
+    public List<Paciente> buscaPorNomeNativo(@Param("nome") String nome);
+ 
 
 }

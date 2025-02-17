@@ -46,11 +46,11 @@ public class Paciente {
         this.id = id;
     }
  
-    public String getNome() {
+    public String getNomeCompleto() {
         return nome;
     }
  
-    public void setNome(String nome) {
+    public void setNomeCompleto(String nome) {
         this.nome = nome;
     }
  
