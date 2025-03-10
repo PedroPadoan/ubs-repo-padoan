@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true)
     private long id;
     private String nome;
     private String nomeSocial;
@@ -35,6 +34,7 @@ public class Paciente {
     private String origemEndereco;
     private String dadosEndereco;
     private String identidade;
+    @Column(unique = true)
     private String cpf;
     
  
@@ -46,11 +46,11 @@ public class Paciente {
         this.id = id;
     }
  
-    public String getNomeCompleto() {
+    public String getNome() {
         return nome;
     }
  
-    public void setNomeCompleto(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
  
